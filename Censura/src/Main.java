@@ -13,11 +13,11 @@ public class Main {
             for(int i = 0; i<p.length(); i++){
                 censura += "*";
             }
-            while(cmp.indexOf(p.toLowerCase(), offset-1) != -1){
+            while(cmp.indexOf(p.toLowerCase(), offset+p.length()-1) != -1){
                 c[count]++;
-                offset = s.indexOf(p);
-                s = s.substring(0, offset ) + censura + s.substring(offset+p.length());
-                cmp = cmp.substring(offset+p.length());
+                offset = cmp.indexOf(p.toLowerCase());
+                s = s.substring(0, offset) + censura + s.substring(offset+p.length());
+                cmp = s.toLowerCase();
             }
             count++;
         }
@@ -32,6 +32,6 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        System.out.println(censura("Ciao Furly Furly", new String[]{"Furly"}));
+        System.out.println(censura("Ciao Furly ciaone sei un furlan ciaone si", new String[]{"Furly", "ciaone"}));
     }
 }
